@@ -1,4 +1,5 @@
 import "server-only";
+import axios from "axios";
 import type { RecipeCardProps } from "@/app/types/CardType";
 
 const BASE = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
@@ -14,20 +15,18 @@ export async function getRandomRecipeCards(
   const params = new URLSearchParams({ number: String(number) });
   if (tags.length) params.set("tags", tags.join(","));
 
-  const res = await fetch(`${BASE}/recipes/random?${params.toString()}`, {
-    headers: {
-      "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
-      "x-rapidapi-host": HOST,
-    },
-    next: { revalidate: 3600 },
-  });
+  const { data } = await axios.get<{ recipes: { id: number, title: string; image: string; summary?: string }[] }>(
+    `${BASE}/recipes/random?${params.toString()}`,
+    {
+      headers: {
+        "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
+        "x-rapidapi-host": HOST,
+      },
+    }
+  );
 
-  if (!res.ok) throw new Error(`Spoonacular: ${res.status}`);
-
-  const data: { recipes: { title: string; image: string; summary?: string }[] } = await res.json();
-
-  // Map API -> RecipeCardProps
   return data.recipes.map((r) => ({
+    id: r.id,
     image: r.image,
     title: r.title,
     subtitle: stripHtml(r.summary ?? "").slice(0, 120) + (r.summary ? "…" : ""),

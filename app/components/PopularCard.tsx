@@ -1,7 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { RecipeCardProps } from "@/app/types/CardType";
 
-export default function RecipeCard({ image, title, subtitle }: RecipeCardProps) {
+export default function RecipeCard({ id, image, title, subtitle }: RecipeCardProps) {
     return (
     <article className="w-[340px] bg-[#F5F2EE] overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
       {/* image */}
@@ -19,12 +20,17 @@ export default function RecipeCard({ image, title, subtitle }: RecipeCardProps) 
     <div className="space-y-3 bg-[#F5F2EE] px-5 py-5">
         <h3 className="text-xl font-bold text-gray-900">{title}</h3>
         <p className="text-sm leading-relaxed text-gray-600">{subtitle}</p>
-        <button
-        type="button"
-        className=" mt-2 inline-flex items-center rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900 shadow hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-[#FFDB63]/60"
-        >
-        View Recipe
-        </button>
+        {id ? (
+          <Link href={`/recipe/${id}`}>
+            <button className="mt-2 inline-flex items-center rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
+              View Recipe
+            </button>
+          </Link>
+        ) : (
+          <button className="mt-2 inline-flex items-center rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
+            View Recipe
+          </button>
+        )}
     </div>
     </article>
 );

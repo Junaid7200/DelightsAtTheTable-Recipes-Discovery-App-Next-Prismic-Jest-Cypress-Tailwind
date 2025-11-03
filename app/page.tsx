@@ -1,7 +1,9 @@
-export default function Home() {
+import Home from "./home/page"
+
+export default function Page() {
   return (
     <div>
-      <h1>Welcome to the Recipe App</h1>
+      <Home />
     </div>
   );
 }
