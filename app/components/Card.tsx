@@ -1,3 +1,5 @@
+'use client';
+import { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from "next/link";
 import type { RecipeCardProps } from "@/app/types/CardType";
@@ -9,7 +11,20 @@ interface EnhancedRecipeCardProps extends RecipeCardProps {
 }
 
 export default function RecipeCard({ id, image, title, subtitle, buttonText, layout = 'vertical' }: EnhancedRecipeCardProps) {
-  const isHorizontal = layout === 'horizontal';
+  const [isMobile, setIsMobile] = useState(false);
+
+useEffect(() => {
+  const checkMobile = () => setIsMobile(window.innerWidth < 768);
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
+  return () => window.removeEventListener('resize', checkMobile);
+}, []);
+
+const isHorizontal = layout === 'horizontal' && !isMobile;
+
+
+
+
   console.log("RecipeCard props:", { id, image, title, subtitle, layout });
 
   return (
@@ -28,7 +43,7 @@ export default function RecipeCard({ id, image, title, subtitle, buttonText, lay
           src={image || "/imgNotFound.jpg"}
           alt={`${title} image`}
           fill
-          className="object-cover object-center"
+          className="object-cover object-center scale-110"
           sizes={isHorizontal 
             ? "(max-width: 640px) 176px, (max-width: 768px) 224px, 256px" 
             : "(max-width: 768px) 50vw, 280px"
