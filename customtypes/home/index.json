@@ -140,6 +140,13 @@
           "label": "nav search bar placeholder",
           "placeholder": "Search"
         }
+      },
+      "card_button_text": {
+        "type": "Text",
+        "config": {
+          "label": "card button text",
+          "placeholder": "View Recipe"
+        }
       }
     }
   }

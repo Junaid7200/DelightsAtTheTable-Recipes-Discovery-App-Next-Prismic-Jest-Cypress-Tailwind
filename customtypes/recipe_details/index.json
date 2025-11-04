@@ -1,0 +1,53 @@
+{
+  "format": "custom",
+  "id": "recipe_details",
+  "label": "Recipe Details",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "ingredients": {
+        "type": "Text",
+        "config": {
+          "label": "ingredients",
+          "placeholder": "Ingredients"
+        }
+      },
+      "instructions": {
+        "type": "Text",
+        "config": {
+          "label": "instructions",
+          "placeholder": "Instructions"
+        }
+      },
+      "summary": {
+        "type": "Text",
+        "config": {
+          "label": "summary",
+          "placeholder": "Summary"
+        }
+      },
+      "ready_in_minutes": {
+        "type": "Text",
+        "config": {
+          "label": "ready in",
+          "placeholder": "ready in"
+        }
+      },
+      "no_instructions_available": {
+        "type": "Text",
+        "config": {
+          "label": "no instructions available",
+          "placeholder": "No Instructions Available"
+        }
+      },
+      "minutes": {
+        "type": "Text",
+        "config": {
+          "label": "minutes",
+          "placeholder": "Minutes"
+        }
+      }
+    }
+  }
+}

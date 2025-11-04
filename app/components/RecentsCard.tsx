@@ -1,14 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { RecipeCardProps } from "@/app/types/CardType";
+import placeholderImage from "@/public/imgNotFound.jpg";
 
-export default function RecentsCard({ id, image, title, subtitle }: RecipeCardProps) {
+export default function RecentsCard({ id, image, title, subtitle, buttonText }: RecipeCardProps) {
+  console.log("RecentsCard props:", { id, image, title, subtitle });
   return (
     <article className="flex w-full items-stretch overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
       {/* left image (rounded only on the left) */}
       <div className="relative h-40 sm:h-44 md:h-48 w-44 sm:w-56 md:w-64 shrink-0 overflow-hidden rounded-l-2xl">
         <Image
-          src={image}
+          src={image || placeholderImage}
           alt={`${title} image`}
           fill
           className="object-cover object-center"
@@ -24,12 +26,12 @@ export default function RecentsCard({ id, image, title, subtitle }: RecipeCardPr
         {id ? (
           <Link href={`/recipe/${id}`}>
             <button className="mt-2 inline-flex items-center rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
-              View Recipe
+              {buttonText || "View Recipe"}
             </button>
           </Link>
         ) : (
           <button className="mt-2 inline-flex items-center rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
-            View Recipe
+            {buttonText || "View Recipe"}
           </button>
         )}
         </div>

@@ -272,6 +272,17 @@ interface HomeDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   nav_search_bar_placeholder: prismic.KeyTextField;
+
+  /**
+   * card button text field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: View Recipe
+   * - **API ID Path**: home.card_button_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  card_button_text: prismic.KeyTextField;
 }
 
 /**
@@ -285,6 +296,93 @@ interface HomeDocumentData {
  */
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+
+/**
+ * Content for Recipe Details documents
+ */
+interface RecipeDetailsDocumentData {
+  /**
+   * ingredients field in *Recipe Details*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Ingredients
+   * - **API ID Path**: recipe_details.ingredients
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  ingredients: prismic.KeyTextField;
+
+  /**
+   * instructions field in *Recipe Details*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Instructions
+   * - **API ID Path**: recipe_details.instructions
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  instructions: prismic.KeyTextField;
+
+  /**
+   * summary field in *Recipe Details*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Summary
+   * - **API ID Path**: recipe_details.summary
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  summary: prismic.KeyTextField;
+
+  /**
+   * ready in field in *Recipe Details*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: ready in
+   * - **API ID Path**: recipe_details.ready_in_minutes
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  ready_in_minutes: prismic.KeyTextField;
+
+  /**
+   * no instructions available field in *Recipe Details*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: No Instructions Available
+   * - **API ID Path**: recipe_details.no_instructions_available
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  no_instructions_available: prismic.KeyTextField;
+
+  /**
+   * minutes field in *Recipe Details*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Minutes
+   * - **API ID Path**: recipe_details.minutes
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  minutes: prismic.KeyTextField;
+}
+
+/**
+ * Recipe Details document from Prismic
+ *
+ * - **API ID**: `recipe_details`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type RecipeDetailsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<RecipeDetailsDocumentData>,
+    "recipe_details",
+    Lang
+  >;
 
 /**
  * Content for Search Recipes documents
@@ -362,7 +460,10 @@ export type SearchRecipesDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomeDocument | SearchRecipesDocument;
+export type AllDocumentTypes =
+  | HomeDocument
+  | RecipeDetailsDocument
+  | SearchRecipesDocument;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -390,6 +491,8 @@ declare module "@prismicio/client" {
       HomeDocumentDataNavbarLinkItem,
       HomeDocumentDataHeroSectionItem,
       HomeDocumentDataSocialsIconsItem,
+      RecipeDetailsDocument,
+      RecipeDetailsDocumentData,
       SearchRecipesDocument,
       SearchRecipesDocumentData,
       AllDocumentTypes,

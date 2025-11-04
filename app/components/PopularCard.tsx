@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { RecipeCardProps } from "@/app/types/CardType";
 
-export default function RecipeCard({ id, image, title, subtitle }: RecipeCardProps) {
+export default function RecipeCard({ id, image, title, subtitle, buttonText }: RecipeCardProps) {
+  console.log("RecipeCard props:", { id, image, title, subtitle, buttonText });
     return (
     <article className="w-[340px] bg-[#F5F2EE] overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
       {/* image */}
@@ -23,12 +24,12 @@ export default function RecipeCard({ id, image, title, subtitle }: RecipeCardPro
         {id ? (
           <Link href={`/recipe/${id}`}>
             <button className="mt-2 inline-flex items-center rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
-              View Recipe
+              {buttonText || "View Recipe"}
             </button>
           </Link>
         ) : (
           <button className="mt-2 inline-flex items-center rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
-            View Recipe
+            {buttonText || "View Recipe"}
           </button>
         )}
     </div>

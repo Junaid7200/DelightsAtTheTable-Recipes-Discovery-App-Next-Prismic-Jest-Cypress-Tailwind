@@ -1,5 +1,6 @@
 import { getRecipeById } from "@/app/lib/getRecipeById";
 import Image from "next/image";
+import { createClient } from "@/prismicio";
 
 type RecipePageProps = {
   params: Promise<{ id: string }>;
@@ -12,11 +13,12 @@ function stripHtml(input = "") {
 export default async function RecipePage({ params }: RecipePageProps) {
   const { id } = await params;
   const recipe = await getRecipeById(Number(id));
-
+  const client = createClient();
+  const recipeData = await client.getSingle("recipe_details");
   return (
     <div className="min-h-screen">
     {/* Hero image with title */}
-    <div className="relative w-full aspect-[21/9]">
+    <div className="relative w-full aspect-21/9">
       <Image
         src={recipe.image}
         alt={recipe.title}
@@ -35,7 +37,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
       <div className="max-w-4xl mx-auto px-6 py-10 space-y-8">
         {/* Ingredients */}
         <section>
-          <h2 className="text-2xl font-bold mb-4">Ingredients</h2>
+          <h2 className="text-2xl font-bold mb-4">{recipeData.data.ingredients}</h2>
           <ul className="space-y-2">
             {recipe.extendedIngredients.map((ing, i) => (
               <li key={i} className="flex items-start">
@@ -48,7 +50,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
 
         {/* Instructions */}
         <section>
-          <h2 className="text-2xl font-bold mb-4">Instructions</h2>
+          <h2 className="text-2xl font-bold mb-4">{recipeData.data.instructions}</h2>
           {recipe.analyzedInstructions.length > 0 ? (
             <ol className="space-y-3">
               {recipe.analyzedInstructions[0].steps.map((step) => (
@@ -61,18 +63,18 @@ export default async function RecipePage({ params }: RecipePageProps) {
               ))}
             </ol>
           ) : (
-            <p className="text-gray-500">No instructions available.</p>
+            <p className="text-gray-500">{recipeData.data.no_instructions_available}</p>
           )}
         </section>
 
         {/* Additional info */}
         {recipe.summary && (
           <section>
-            <h2 className="text-2xl font-bold mb-4">Informações Adicionais</h2>
+            <h2 className="text-2xl font-bold mb-4">{recipeData.data.summary}</h2>
             <p className="leading-relaxed">{stripHtml(recipe.summary)}</p>
             {recipe.readyInMinutes && (
               <p className="mt-2 text-sm text-gray-600">
-                Ready in {recipe.readyInMinutes} minutes
+                {recipeData.data.ready_in_minutes} {recipe.readyInMinutes} {recipeData.data.minutes}
               </p>
             )}
           </section>

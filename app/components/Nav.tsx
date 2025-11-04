@@ -20,7 +20,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
         {/* Center: menu */}
         <div className="justify-self-center flex items-center gap-10">
           {page.data.navbar_link.map((item) => (
-            <Link key={item.navbar_link_text} href={asLink(item.navbar_link) || "/"} className="text-lg font-semibold hover:text-[#FFDB63] transition-colors">
+            <Link key={item.navbar_link_text} href={asLink(item.navbar_link) || "www.google.com"} className="text-lg font-semibold hover:text-[#FFDB63] transition-colors">
               {item.navbar_link_text}
             </Link>
           ))}
