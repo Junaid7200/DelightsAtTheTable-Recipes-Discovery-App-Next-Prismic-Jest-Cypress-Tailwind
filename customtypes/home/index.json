@@ -147,6 +147,20 @@
           "label": "card button text",
           "placeholder": "View Recipe"
         }
+      },
+      "meta_tile": {
+        "type": "Text",
+        "config": {
+          "label": "meta tile",
+          "placeholder": "recipe app"
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "meta description",
+          "placeholder": "here is your meta description"
+        }
       }
     }
   }

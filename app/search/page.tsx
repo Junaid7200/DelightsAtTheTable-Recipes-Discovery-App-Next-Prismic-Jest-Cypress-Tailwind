@@ -1,5 +1,5 @@
 import { searchRecipes } from "@/app/lib/searchRecipes";
-import PopularCard from "@/app/components/PopularCard";
+import Card from "@/app/components/Card";
 import { IoSearch } from "react-icons/io5";
 import { createClient } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
@@ -14,6 +14,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     const cards = query ? await searchRecipes(query) : [];
     const client = createClient();
     const searchData = await client.getSingle("search_recipes");
+    const homeData = await client.getSingle("home");
 
 
     return (
@@ -50,7 +51,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             {cards.length > 0 ? (
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {cards.map((c, i) => (
-                        <PopularCard key={i} {...c} />
+                        <Card key={i} {...c} layout="vertical" buttonText={homeData.data.card_button_text} />
                 ))}
                 </div>
             ) : (

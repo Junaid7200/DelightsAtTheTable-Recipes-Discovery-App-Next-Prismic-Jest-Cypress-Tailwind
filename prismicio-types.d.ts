@@ -283,6 +283,28 @@ interface HomeDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   card_button_text: prismic.KeyTextField;
+
+  /**
+   * meta tile field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: recipe app
+   * - **API ID Path**: home.meta_tile
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_tile: prismic.KeyTextField;
+
+  /**
+   * meta description field in *Home*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: here is your meta description
+   * - **API ID Path**: home.meta_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
 }
 
 /**
