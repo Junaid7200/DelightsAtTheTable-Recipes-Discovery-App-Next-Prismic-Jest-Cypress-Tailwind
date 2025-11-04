@@ -1,7 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { RecipeCardProps } from "@/app/types/CardType";
 
-export default function RecentsCard({ image, title, subtitle }: RecipeCardProps) {
+export default function RecentsCard({ id, image, title, subtitle }: RecipeCardProps) {
   return (
     <article className="flex w-full items-stretch overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
       {/* left image (rounded only on the left) */}
@@ -10,7 +11,7 @@ export default function RecentsCard({ image, title, subtitle }: RecipeCardProps)
           src={image}
           alt={`${title} image`}
           fill
-          className="object-cover"
+          className="object-cover object-center"
           sizes="(max-width: 640px) 176px, (max-width: 768px) 224px, 256px"
         />
       </div>
@@ -20,12 +21,17 @@ export default function RecentsCard({ image, title, subtitle }: RecipeCardProps)
         <div className="w-full">
           <h3 className="text-xl font-bold text-gray-900">{title}</h3>
           <p className="mt-2 text-sm leading-relaxed text-gray-700">{subtitle}</p>
-          <button
-            type="button"
-            className="mt-4 inline-flex items-center rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900 hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-[#FFDB63]/60"
-          >
+        {id ? (
+          <Link href={`/recipe/${id}`}>
+            <button className="mt-2 inline-flex items-center rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
+              View Recipe
+            </button>
+          </Link>
+        ) : (
+          <button className="mt-2 inline-flex items-center rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
             View Recipe
           </button>
+        )}
         </div>
       </div>
     </article>

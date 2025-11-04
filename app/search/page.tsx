@@ -1,5 +1,8 @@
 import { searchRecipes } from "@/app/lib/searchRecipes";
 import PopularCard from "@/app/components/PopularCard";
+import { IoSearch } from "react-icons/io5";
+import { createClient } from "@/prismicio";
+import { PrismicRichText } from "@prismicio/react";
 
 type SearchPageProps = {
     searchParams: Promise<{ q?: string }>;
@@ -9,30 +12,28 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     const params = await searchParams;
     const query = params.q || "";
     const cards = query ? await searchRecipes(query) : [];
+    const client = createClient();
+    const searchData = await client.getSingle("search_recipes");
+
 
     return (
     <div className="flex flex-col items-center px-6 py-10 min-h-screen">
       {/* Search recipe section */}
         <section className="w-full max-w-4xl">
-        <h1 className="text-3xl font-bold text-center mb-8">Search Recipes</h1>
+        <div className="text-3xl font-bold text-center mb-8">
+            <PrismicRichText field={searchData.data.main_heading} />
+        </div>
         <form action="/search" method="get" className="w-full">
             <label className="relative block">
-            <span className="sr-only">Search recipes</span>
+            <span className="sr-only">Search recipes</span> {/* for visually disabled homies, outside the scope of this project I assume */}
             <span className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-gray-400">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                <path
-                    d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                />
-                </svg>
+                <IoSearch size={20} />
             </span>
             <input
                 type="text"
                 name="q"
                 defaultValue={query}
-                placeholder="Search for recipes..."
+                placeholder={searchData.data.placeholder_text_for_search_bar ?? ""}
                 className="w-full rounded-full border border-gray-200 bg-gray-50 py-3 pl-12 pr-4 text-base placeholder-gray-400 shadow-sm focus:border-[#FFDB63] focus:outline-none focus:ring-2 focus:ring-[#FFDB63]/60"
             />
             </label>
@@ -44,7 +45,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         {query ? (
             <>
             <h2 className="mb-6 text-2xl font-bold">
-                Results for &ldquo;{query}&rdquo;
+                {searchData.data.results_heading} &ldquo;{query}&rdquo;
             </h2>
             {cards.length > 0 ? (
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -53,11 +54,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 ))}
                 </div>
             ) : (
-                <p className="text-center text-gray-500">No recipes found. Try a different search term.</p>
+                <p className="text-center text-gray-500">{searchData.data.no_recipes_found}</p>
             )}
             </>
         ) : (
-            <p className="text-center text-gray-500">Enter a search term to find recipes.</p>
+            <p className="text-center text-gray-500">{searchData.data.text_when_no_search}</p>
         )}
         </section>
         <div className="grow">

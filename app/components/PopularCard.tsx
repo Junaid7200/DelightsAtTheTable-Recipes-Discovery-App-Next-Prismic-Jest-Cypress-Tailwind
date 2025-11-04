@@ -11,7 +11,7 @@ export default function RecipeCard({ id, image, title, subtitle }: RecipeCardPro
         src={image}
         alt={`${title} image`}
         fill
-        className="object-cover"
+        className="object-cover object-center"
         sizes="(max-width: 768px) 50vw, 280px"
         />
     </div>

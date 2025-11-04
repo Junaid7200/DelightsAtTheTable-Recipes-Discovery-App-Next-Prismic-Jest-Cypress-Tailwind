@@ -1,0 +1,48 @@
+{
+  "format": "custom",
+  "id": "search_recipes",
+  "label": "Search Recipes",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "main_heading": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Main heading",
+          "placeholder": "Search Recipes",
+          "allowTargetBlank": true,
+          "multi": "heading1,heading2,heading3,strong,em"
+        }
+      },
+      "placeholder_text_for_search_bar": {
+        "type": "Text",
+        "config": {
+          "label": "placeholder text for search bar",
+          "placeholder": "Search for recipes..."
+        }
+      },
+      "text_when_no_search": {
+        "type": "Text",
+        "config": {
+          "label": "text when no search",
+          "placeholder": "Enter a search term to find recipes."
+        }
+      },
+      "results_heading": {
+        "type": "Text",
+        "config": {
+          "label": "Results heading",
+          "placeholder": "Results for: "
+        }
+      },
+      "no_recipes_found": {
+        "type": "Text",
+        "config": {
+          "label": "no recipes found",
+          "placeholder": "No recipes found. Try a different search term."
+        }
+      }
+    }
+  }
+}

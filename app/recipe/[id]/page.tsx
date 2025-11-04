@@ -15,21 +15,21 @@ export default async function RecipePage({ params }: RecipePageProps) {
 
   return (
     <div className="min-h-screen">
-      {/* Hero image with title */}
-      <div className="relative h-64 md:h-80 w-full">
-        <Image
-          src={recipe.image}
-          alt={recipe.title}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-          <h1 className="text-white text-3xl md:text-5xl font-bold text-center px-4">
-            {recipe.title}
-          </h1>
-        </div>
+    {/* Hero image with title */}
+    <div className="relative w-full aspect-[21/9]">
+      <Image
+        src={recipe.image}
+        alt={recipe.title}
+        fill
+        className="object-cover object-center"
+        priority
+      />
+      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+        <h1 className="text-white text-3xl md:text-5xl font-bold text-center px-4">
+          {recipe.title}
+        </h1>
       </div>
+    </div>
 
       {/* Content */}
       <div className="max-w-4xl mx-auto px-6 py-10 space-y-8">
@@ -39,7 +39,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
           <ul className="space-y-2">
             {recipe.extendedIngredients.map((ing, i) => (
               <li key={i} className="flex items-start">
-                <span className="text-[#FFDB63] mr-2">•</span>
+                <span className="mr-2">•</span>
                 <span>{ing.original}</span>
               </li>
             ))}
@@ -53,7 +53,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
             <ol className="space-y-3">
               {recipe.analyzedInstructions[0].steps.map((step) => (
                 <li key={step.number} className="flex items-start">
-                  <span className="bg-[#FFDB63] text-black font-bold rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-1 shrink-0">
+                  <span className="text-black rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-1 shrink-0">
                     {step.number}
                   </span>
                   <span>{step.step}</span>

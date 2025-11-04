@@ -1,0 +1,146 @@
+{
+  "format": "custom",
+  "id": "home",
+  "label": "Home",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "website_logo": {
+        "type": "Image",
+        "config": {
+          "label": "website logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "website_name": {
+        "type": "Text",
+        "config": {
+          "label": "website name",
+          "placeholder": "Delícias à Mesa"
+        }
+      },
+      "navbar_link": {
+        "type": "Group",
+        "config": {
+          "label": "navbar link",
+          "repeat": true,
+          "fields": {
+            "navbar_link_text": {
+              "type": "Text",
+              "config": {
+                "label": "navbar link text",
+                "placeholder": ""
+              }
+            },
+            "navbar_link": {
+              "type": "Link",
+              "config": {
+                "label": "navbar link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            }
+          }
+        }
+      },
+      "section_one_text": {
+        "type": "Text",
+        "config": {
+          "label": "section one text",
+          "placeholder": "Popular Recipes"
+        }
+      },
+      "hero_section": {
+        "type": "Group",
+        "config": {
+          "label": "hero section",
+          "repeat": false,
+          "fields": {
+            "background_hero_image": {
+              "type": "Image",
+              "config": {
+                "label": "background hero image",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "hero_text": {
+              "type": "Text",
+              "config": {
+                "label": "hero text",
+                "placeholder": "Get Inspired, Cook with passion and enjoy unforgettable moments at the table"
+              }
+            }
+          }
+        }
+      },
+      "section_two_text": {
+        "type": "Text",
+        "config": {
+          "label": "Section two text",
+          "placeholder": "Recent Recipes"
+        }
+      },
+      "footer_text": {
+        "type": "Text",
+        "config": {
+          "label": "footer text",
+          "placeholder": "Redes sociais:"
+        }
+      },
+      "socials_icons": {
+        "type": "Group",
+        "config": {
+          "label": "socials icons",
+          "repeat": false,
+          "fields": {
+            "icon1": {
+              "type": "Image",
+              "config": {
+                "label": "icon1",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "icon2": {
+              "type": "Image",
+              "config": {
+                "label": "icon2",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "icon3": {
+              "type": "Image",
+              "config": {
+                "label": "icon3",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "icon4": {
+              "type": "Image",
+              "config": {
+                "label": "icon4",
+                "constraint": {},
+                "thumbnails": []
+              }
+            }
+          }
+        }
+      },
+      "nav_search_bar_placeholder": {
+        "type": "Text",
+        "config": {
+          "label": "nav search bar placeholder",
+          "placeholder": "Search"
+        }
+      }
+    }
+  }
+}
