@@ -2,6 +2,11 @@ import axios from "axios";
 
 const RECIPES_PER_PAGE = 9;
 
+
+function stripHtml(input = "") {
+  return input.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+}
+
 export async function searchRecipes(query: string, page: number = 1) {
   if (!query) {
     return { results: [], totalResults: 0 };
@@ -31,7 +36,7 @@ export async function searchRecipes(query: string, page: number = 1) {
       id: recipe.id,
       image: recipe.image,
       title: recipe.title,
-      subtitle: recipe.summary,
+      subtitle: stripHtml(recipe.summary),
     }));
 
     return {

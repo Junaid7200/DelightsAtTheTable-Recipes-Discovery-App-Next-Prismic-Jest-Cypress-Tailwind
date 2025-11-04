@@ -22,7 +22,6 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         createClient().getSingle("search_recipes"),
         createClient().getSingle("home"),
     ]);
-    console.log(searchResponse);
 
     const { results: cards, totalResults } = searchResponse;
 
@@ -73,12 +72,12 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 <div className="mt-10 flex items-center justify-center gap-4">
                     {hasPrevPage && (
                         <Link href={`/search?q=${query}&page=${page - 1}`} className="rounded-full bg-gray-200 px-5 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-300">
-                            {searchData.data.prev_button_text || "also something"}
+                            Previous
                         </Link>
                     )}
                     {hasNextPage && (
                         <Link href={`/search?q=${query}&page=${page + 1}`} className="rounded-full bg-[#FFDB63] px-5 py-2 text-sm font-semibold text-gray-900 hover:bg-yellow-400">
-                            {searchData.data.next_button_text || "something"}
+                            Next
                         </Link>
                     )}
                 </div>
