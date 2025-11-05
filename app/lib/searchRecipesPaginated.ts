@@ -47,4 +47,4 @@ export async function searchRecipes(query: string, page: number = 1) {
     console.error("Failed to fetch recipes:", error);
     return { results: [], totalResults: 0 };
   }
-}
+} 
