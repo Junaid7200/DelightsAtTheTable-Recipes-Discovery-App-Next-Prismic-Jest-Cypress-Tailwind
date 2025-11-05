@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { RecipeCardProps } from "@/app/types/CardType";
 import clsx from "clsx";
+import placeholderImage from '@/public/imgNotFound.jpg';
 
 // Add layout to the props
 interface EnhancedRecipeCardProps extends RecipeCardProps {
@@ -12,6 +13,7 @@ interface EnhancedRecipeCardProps extends RecipeCardProps {
 
 export default function RecipeCard({ id, image, title, subtitle, buttonText, layout = 'vertical' }: EnhancedRecipeCardProps) {
   const [isMobile, setIsMobile] = useState(false);
+  const [imageSrc, setImageSrc] = useState(image);
 
 useEffect(() => {
   const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -40,9 +42,12 @@ const isHorizontal = layout === 'horizontal' && !isMobile;
           : "h-40 w-full"
       )}>
         <Image
-          src={image || "/imgNotFound.jpg"}
+          src={imageSrc || "/imgNotFound.jpg"}
           alt={`${title} image`}
           fill
+          onError={() => {
+            setImageSrc(placeholderImage)
+          }}
           className="object-cover object-center scale-110"
           sizes={isHorizontal 
             ? "(max-width: 640px) 176px, (max-width: 768px) 224px, 256px" 

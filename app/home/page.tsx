@@ -5,8 +5,8 @@ import Card from "../components/Card";
 
 
 export default async function Home() {
-    const cards = await getRandomRecipeCards({ number: 3, tags: ["vegetable"] });
-    const recentCards = await getRandomRecipeCards({ number: 3, tags: ["dinner"] });
+    const cards = await getRandomRecipeCards({ number: 3, tags: [] });
+    const recentCards = await getRandomRecipeCards({ number: 3, tags: [] });
     const client = createClient();
     const homeData = await client.getSingle("home");
 
