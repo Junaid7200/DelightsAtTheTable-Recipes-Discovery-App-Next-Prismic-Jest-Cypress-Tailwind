@@ -100,7 +100,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
 
         {/* Mobile Search Bar */}
         <div className="mt-16 px-7">
-          <form action="/search" method="get">
+          <form action="/recipe" method="get">
             <label className="relative block">
               <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-gray-400">
                 <IoSearch size={18} />
