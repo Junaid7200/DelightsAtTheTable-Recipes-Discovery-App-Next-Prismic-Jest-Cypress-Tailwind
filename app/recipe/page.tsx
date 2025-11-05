@@ -36,7 +36,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         <div className="text-3xl font-bold text-center mb-8">
             <PrismicRichText field={searchData.data.main_heading} />
         </div>
-        <form action="/search" method="get" className="w-full">
+        <form action="/recipe" method="get" className="w-full">
             <label className="relative block">
             <span className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-gray-400">
                 <IoSearch size={20} />
@@ -70,13 +70,13 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 {/* Pagination Controls */}
                 <div className="mt-10 flex items-center justify-center gap-4">
                     {hasPrevPage && (
-                        <Link href={`/search?q=${query}&page=${page - 1}`} className="rounded-full bg-gray-200 px-5 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-300">
-                            Previous
+                        <Link href={`/recipe?q=${query}&page=${page - 1}`} className="rounded-full bg-gray-200 px-5 py-2 text-sm font-semibold text-gray-800 hover:bg-gray-300">
+                            {searchData.data.prev_button_text || "Previous"}
                         </Link>
                     )}
                     {hasNextPage && (
-                        <Link href={`/search?q=${query}&page=${page + 1}`} className="rounded-full bg-[#FFDB63] px-5 py-2 text-sm font-semibold text-gray-900 hover:bg-yellow-400">
-                            Next
+                        <Link href={`/recipe?q=${query}&page=${page + 1}`} className="rounded-full bg-[#FFDB63] px-5 py-2 text-sm font-semibold text-gray-900 hover:bg-yellow-400">
+                            {searchData.data.next_button_text || "Next"}
                         </Link>
                     )}
                 </div>

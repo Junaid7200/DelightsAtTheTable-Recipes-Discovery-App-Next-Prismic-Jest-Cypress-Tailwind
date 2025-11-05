@@ -47,6 +47,13 @@
           "label": "minutes",
           "placeholder": "Minutes"
         }
+      },
+      "similar_recipes": {
+        "type": "Text",
+        "config": {
+          "label": "similar Recipes",
+          "placeholder": "Similar Recipes"
+        }
       }
     }
   }

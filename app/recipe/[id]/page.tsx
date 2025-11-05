@@ -1,6 +1,8 @@
 import { getRecipeById } from "@/app/lib/getRecipeById";
 import Image from "next/image";
 import { createClient } from "@/prismicio";
+import { getSimilarRecipes } from "@/app/lib/similarRecipes";
+import Card from "@/app/components/Card";
 
 type RecipePageProps = {
   params: Promise<{ id: string }>;
@@ -15,6 +17,13 @@ export default async function RecipePage({ params }: RecipePageProps) {
   const recipe = await getRecipeById(Number(id));
   const client = createClient();
   const recipeData = await client.getSingle("recipe_details");
+  const homeData = await client.getSingle("home");
+  const similarRecipes = await getSimilarRecipes(id);
+
+
+
+
+
   return (
     <div className="min-h-screen">
     {/* Hero image with title */}
@@ -34,7 +43,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
     </div>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-6 py-10 space-y-8">
+      <div className="md:pl-32 mx-auto px-6 py-10 space-y-8">
         {/* Ingredients */}
         <section>
           <h2 className="text-2xl font-bold mb-4">{recipeData.data.ingredients}</h2>
@@ -78,6 +87,16 @@ export default async function RecipePage({ params }: RecipePageProps) {
               </p>
             )}
           </section>
+        )}
+        {similarRecipes.length > 0 && (
+        <div className="mt-10">
+          <h2 className="w-full text-2xl font-bold mb-4">{recipeData.data.similar_recipes}</h2>
+          <div className="flex flex-col justify-center md:justify-start md:flex-row gap-24">
+            {similarRecipes.map((recipe) => (
+              <Card key={recipe.id} {...recipe} layout="vertical" buttonText={homeData.data.card_button_text || "View Recipe"} />
+            ))}
+          </div>
+        </div>
         )}
       </div>
     </div>

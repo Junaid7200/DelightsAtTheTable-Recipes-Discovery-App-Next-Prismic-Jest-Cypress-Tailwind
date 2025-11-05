@@ -398,6 +398,17 @@ interface RecipeDetailsDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   minutes: prismic.KeyTextField;
+
+  /**
+   * similar Recipes field in *Recipe Details*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Similar Recipes
+   * - **API ID Path**: recipe_details.similar_recipes
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  similar_recipes: prismic.KeyTextField;
 }
 
 /**
