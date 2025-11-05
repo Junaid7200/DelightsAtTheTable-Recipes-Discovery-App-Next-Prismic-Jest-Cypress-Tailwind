@@ -38,7 +38,6 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         </div>
         <form action="/search" method="get" className="w-full">
             <label className="relative block">
-            <span className="sr-only">Search recipes</span>
             <span className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-gray-400">
                 <IoSearch size={20} />
             </span>

@@ -18,7 +18,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
   return (
     <div className="min-h-screen">
     {/* Hero image with title */}
-    <div className="relative w-full aspect-21/9">
+    <div className="relative aspect-21/9 w-full min-h-[640px] md:min-h-[560px] overflow-hidden bg-white">
       <Image
         src={recipe.image}
         alt={recipe.title}
