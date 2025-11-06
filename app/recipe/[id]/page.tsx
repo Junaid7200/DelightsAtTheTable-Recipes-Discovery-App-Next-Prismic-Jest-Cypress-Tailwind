@@ -11,6 +11,32 @@ type RecipePageProps = {
 };
 
 
+// export async function generateMetadata({ params }: RecipePageProps): Promise<Metadata> {
+//   const recipe = await getRecipeById(Number(params.id));
+
+//   if (!recipe) {
+//     return {
+//       title: "Recipe not found",
+//     };
+//   }
+
+//   const description = stripHtml(recipe.summary).slice(0, 160);
+
+//   return {
+//     title: recipe.title,
+//     description: description,
+//     openGraph: {
+//       title: recipe.title,
+//       description: description,
+//       images: [
+//         {
+//           url: recipe.image,
+//           alt: recipe.title,
+//         },
+//       ],
+//     },
+//   };
+// }
 
 
 
@@ -30,20 +56,6 @@ export default async function RecipePage({ params }: RecipePageProps) {
     <div className="min-h-screen">
     {/* Hero image with title */}
     <RecipeHeroImage src={recipe.image} alt={recipe.title} />
-    {/* <div className="relative aspect-21/9 w-full min-h-[640px] md:min-h-[560px] overflow-hidden bg-white">
-      <Image
-        src={recipe.image || "/imgNotFound.jpg"}
-        alt={recipe.title}
-        fill
-        className="object-cover object-center"
-        priority
-      />
-      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-        <h1 className="text-white text-3xl md:text-5xl font-bold text-center px-4">
-          {recipe.title}
-        </h1>
-      </div>
-    </div> */}
 
       {/* Content */}
       <div className="md:pl-32 mx-auto px-6 py-10 space-y-8">

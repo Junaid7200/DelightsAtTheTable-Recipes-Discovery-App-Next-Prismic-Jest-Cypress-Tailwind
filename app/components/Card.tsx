@@ -25,10 +25,6 @@ useEffect(() => {
 const isHorizontal = layout === 'horizontal' && !isMobile;
 
 
-
-
-  console.log("RecipeCard props:", { id, image, title, subtitle, layout });
-
   return (
     <article className={clsx(
       "overflow-hidden rounded-2xl border border-gray-200 shadow-sm",

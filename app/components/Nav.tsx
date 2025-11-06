@@ -9,7 +9,6 @@ import { useState } from 'react';
 
 export default function Nav({ page }: { page: HomeDocument }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  console.log('Nav page data:', page.data);
 
   return (
     <nav className="w-full">
