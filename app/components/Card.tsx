@@ -15,6 +15,10 @@ export default function RecipeCard({ id, image, title, subtitle, buttonText, lay
   const [isMobile, setIsMobile] = useState(false);
   const [imageSrc, setImageSrc] = useState(image);
 
+  useEffect(() => {
+    setImageSrc(image);
+  }, [image]);
+
 useEffect(() => {
   const checkMobile = () => setIsMobile(window.innerWidth < 768);
   checkMobile();
