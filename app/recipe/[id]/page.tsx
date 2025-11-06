@@ -1,14 +1,18 @@
 import { getRecipeById } from "@/app/lib/GetRecipeById";
-import Image from "next/image";
 import { createClient } from "@/prismicio";
 import { getSimilarRecipes } from "@/app/lib/SimilarRecipes";
 import Card from "@/app/components/Card";
 import stripHtml from "@/app/lib/utils";
 import RecipeHeroImage  from "@/app/components/RecipeHeroImage";
 
+
 type RecipePageProps = {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 };
+
+
+
+
 
 export default async function RecipePage({ params }: RecipePageProps) {
   const { id } = await params;
@@ -46,7 +50,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
         {/* Ingredients */}
         <section>
           <h2 className="text-2xl font-bold mb-4">{recipeData.data.ingredients}</h2>
-          <ul className="space-y-2">
+          <ul className="space-y-2 list-disc list-inside">
             {recipe.extendedIngredients.map((ing, i) => (
               <li key={i} className="flex items-start">
                 <span className="mr-2">•</span>

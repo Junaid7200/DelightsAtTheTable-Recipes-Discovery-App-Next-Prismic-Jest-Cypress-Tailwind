@@ -4,12 +4,32 @@ import { IoSearch } from "react-icons/io5";
 import { createClient } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
 import Link from "next/link";
+import { Metadata } from "next";
 
 const RECIPES_PER_PAGE = 9;
 
 type SearchPageProps = {
-    searchParams: Promise<{ q?: string; page?: string }>;
+  searchParams: { q?: string; page?: string };
 };
+
+
+export async function generateMetadata({ searchParams }: SearchPageProps): Promise<Metadata> {
+  const query = searchParams.q || "";
+  if (query) {
+    return {
+      title: `Search results for "${query}"`,
+      description: `Find recipes matching your search for ${query}.`,
+    };
+  }
+  // Default for when there is no search query
+  return {
+    title: "Search Recipes",
+    description: "Search for your next favorite recipe.",
+  };
+}
+
+
+
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
     const params = await searchParams;

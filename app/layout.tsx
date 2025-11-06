@@ -10,25 +10,50 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-
-const client = createClient();
-const homeData = await client.getSingle("home");
-
-
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
+// This fetches data once for the whole layout
+const client = createClient();
+const homeData = await client.getSingle("home");
+
+
+// --- THIS SECTION IS UPDATED ---
 export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient();
-  const homeData = await client.getSingle("home");
+  // Use the homeData you already fetched
+  const title = homeData.data.meta_tile || "Recipe App";
+  const description = homeData.data.meta_description || "Find your next favorite recipe.";
+  const siteName = homeData.data.website_name || "Recipe App";
+  const siteUrl = "https://your-app-url.com";
 
   return {
-    title: homeData.data.meta_tile || "Recipe App",
-    description: homeData.data.meta_description || "Find your next favorite recipe.",
+    // This part is for the browser tab
+    title: {
+      template: '%s | ' + siteName, // '%s' is replaced by the page title
+      default: title, // The default title for the home page (app/page.tsx)
+    },
+    description: description,
+
+    openGraph: {
+      title: title,
+      description: description,
+      url: siteUrl,
+      siteName: siteName,
+      images: [
+        {
+          // You MUST add this image to your /public folder
+          url: `${siteUrl}/Cover.png`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+      type: 'website',
+    },
   };
 }
+// --- END OF UPDATED SECTION ---
 
 
 export default async function RootLayout({
@@ -43,7 +68,9 @@ export default async function RootLayout({
     >
       <body>
       <Nav page={homeData} />
+      <main>
         {children}
+      </main>
       <Footer page={homeData} />
       </body>
     </html>
