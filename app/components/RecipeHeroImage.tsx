@@ -35,7 +35,7 @@ export default function RecipeHeroImage({ src, alt }: HeroImageProps) {
         }}
       />
       {/* Overlay with Title */}
-      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+      <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
         <h1 className="text-white text-3xl md:text-5xl font-bold text-center px-4">
           {alt}
         </h1>

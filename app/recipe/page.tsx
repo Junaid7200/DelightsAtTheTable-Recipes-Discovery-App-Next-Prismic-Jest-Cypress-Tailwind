@@ -59,7 +59,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         <form action="/recipe" method="get" className="w-full">
             <label className="relative block">
             <span className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-gray-400">
-                <IoSearch size={20} />
+                <IoSearch size={20} aria-hidden="true" />
             </span>
             <input
                 type="text"

@@ -42,7 +42,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
             <label className="relative block">
               {/* pointer-even-none so the click passes through the icon and hits the input field */}
               <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-gray-400">
-                <IoSearch size={18} />
+                <IoSearch size={18} aria-hidden="true" />
               </span>
               <input
                 type="text"
@@ -62,7 +62,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
             // aria-labels are just to follow the WCAG
             aria-label="Open navigation menu"
           >
-            <IoMenu size={32} />
+            <IoMenu size={32} aria-hidden="true"/>
           </button>
         </div>
       </div>
@@ -83,7 +83,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
             onClick={() => setIsMobileMenuOpen(false)}
             aria-label="Close navigation menu"
           >
-            <IoClose size={32} />
+            <IoClose size={32} aria-hidden="true" />
           </button>
         </div>
 
