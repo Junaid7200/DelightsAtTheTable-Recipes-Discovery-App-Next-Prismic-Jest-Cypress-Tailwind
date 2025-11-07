@@ -48,7 +48,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
                 type="text"
                 name="q"
                 placeholder={page.data.nav_search_bar_placeholder || "Search recipes..."}
-                className="w-64 rounded-full bg-gray-50 border border-gray-100 pl-10 pr-4 py-2 text-sm placeholder-gray-400
+                className="w-64 rounded-full bg-[#F5F2F2] border border-gray-100 pl-10 pr-4 py-2 text-sm placeholder-gray-400
                 focus:outline-none focus:ring-2 focus:ring-[#FFDB63]/60 focus:border-transparent"
               />
             </label>
@@ -112,7 +112,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
                 type="text"
                 name="q"
                 placeholder={page.data.nav_search_bar_placeholder || "Search recipes..."}
-                className="w-full rounded-full bg-gray-50 border border-gray-100 pl-10 pr-4 py-2 text-sm placeholder-gray-400
+                className="w-full rounded-full bg-[#F5F2F2] border border-gray-100 pl-10 pr-4 py-2 text-sm placeholder-gray-400
                 focus:outline-none focus:ring-2 focus:ring-[#FFDB63]/60 focus:border-transparent"
               />
             </label>
