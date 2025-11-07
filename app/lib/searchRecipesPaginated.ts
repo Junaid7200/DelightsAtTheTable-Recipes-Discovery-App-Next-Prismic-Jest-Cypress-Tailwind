@@ -1,5 +1,5 @@
 import axios from "axios";
-import stripHtml from "./utils";
+import stripHtml, {BASE, HOST} from "./utils";
 
 
 
@@ -14,7 +14,7 @@ export async function searchRecipes(query: string, page: number = 1) {
 
   try {
     const response = await axios.get(
-      "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch",
+      `${BASE}/recipes/complexSearch`,
       {
         params: {
           query,
@@ -25,7 +25,7 @@ export async function searchRecipes(query: string, page: number = 1) {
         },
         headers: {
           "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
-          "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+          "x-rapidapi-host": HOST,
         },
       }
     );

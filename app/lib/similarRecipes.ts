@@ -3,9 +3,8 @@ import axios from "axios";
 import type { RecipeCardProps } from "@/app/types/CardType";
 import placeholderImage from "@/public/imgNotFound.jpg";
 import type { SimilarRecipe } from "@/app/types/SimilarRecipe";
+import { BASE, HOST } from './utils';
 
-const BASE = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
-const HOST = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
 const IMAGE_BASE = "https://img.spoonacular.com/recipes";
 
 

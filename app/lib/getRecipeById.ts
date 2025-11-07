@@ -1,9 +1,7 @@
 import "server-only";
 import axios from "axios";
 import type { RecipeDetail } from "@/app/types/RecipeDetail";
-
-const BASE = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
-const HOST = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com";
+import { BASE, HOST } from "./utils";
 
 
 export async function getRecipeById(id: number): Promise<RecipeDetail | null> {
