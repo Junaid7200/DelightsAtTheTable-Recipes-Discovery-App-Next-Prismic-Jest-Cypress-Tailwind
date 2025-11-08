@@ -9,7 +9,7 @@ export default function Hero({page}: {page: HomeDocument}) {
   }
   return (
     // 640px height on mobile view since i want it to be stretched in mobile view.
-    <section className="relative w-full min-h-[640px] md:min-h-[560px] overflow-hidden">
+    <section className="relative w-full h-[710px] md:h-[360px] overflow-hidden">
       {/* two diff hero images depending on the screen size */}
       <PrismicNextImage
         field={heroData.background_hero_image_mobile}
@@ -28,7 +28,7 @@ export default function Hero({page}: {page: HomeDocument}) {
 
       {/* Centered content: simple absolute div so text is on top of the image and grid place-items-center to center it */}
       <div className="absolute inset-0 z-10 grid place-items-center px-6">
-        <h1 className="max-w-5xl mx-auto text-center text-white text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+        <h1 className="md:w-[900px] text-[40px] mx-auto text-center text-white font-extrabold leading-tight">
           {heroData.hero_text}
         </h1>
       </div>

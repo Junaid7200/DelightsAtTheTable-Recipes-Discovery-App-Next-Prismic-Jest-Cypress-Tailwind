@@ -12,16 +12,17 @@ export default function Nav({ page }: { page: HomeDocument }) {
     // using the semantic nav tag
     <nav className="w-full"> 
       {/* Top Yellow Bar */}
-      <div className="bg-[#FFDB63] h-3 w-full" />
+      <div className="bg-[#FFDB63] h-[30px] w-full" />
 
       {/* Main Navbar: ganna need a simple grid with 3 columns */}
-      <div className="bg-white flex md:grid md:grid-cols-3 items-center justify-between px-7 py-4">
+      <div className='bg-white h-[110px]  py-[34px]'>
+      <div className="flex px-5 md:px-0 max-w-[1285px] mx-auto my-0 md:grid md:grid-cols-3 items-center justify-between">
         
         {/* Left: logo + website name: the website name needs to be hidden for mobile view but block (visible) for md or bigger. other then that, this just needs to be horizontal so flex will do */}
         <PrismicLink href="/" className="flex items-center gap-4 md:justify-self-start" aria-label="Homepage">
-          <PrismicNextImage field={page.data.website_logo} width={40} height={40} />
+          <PrismicNextImage field={page.data.website_logo} width={28} height={26} />
           {/* Hide text on mobile, show on medium+ */}
-          <span className="text-2xl font-bold hidden md:block">{page.data.website_name}</span>
+          <span className="text-2xl hidden md:block">{page.data.website_name}</span>
         </PrismicLink>
 
         {/* Center: menu: the whole thing needs to be hidden in mobile view, in md or higher view its a very simple flex with some gap */}
@@ -46,7 +47,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
                 type="text"
                 name="q"
                 placeholder={page.data.nav_search_bar_placeholder || "Search recipes..."}
-                className="w-64 rounded-full bg-[#F5F2F2] border border-gray-100 pl-10 pr-4 py-2 text-sm placeholder-gray-400
+                className="w-64 h-[45px] rounded-full bg-[#F5F2F2] border border-gray-100 pl-10 pr-4 py-2 text-sm placeholder-gray-400
                 focus:outline-none focus:ring-2 focus:ring-[#FFDB63]/60 focus:border-transparent"
               />
             </label>
@@ -63,6 +64,7 @@ export default function Nav({ page }: { page: HomeDocument }) {
             <IoMenu size={32} aria-hidden="true"/>
           </button>
         </div>
+      </div>
       </div>
 
 
