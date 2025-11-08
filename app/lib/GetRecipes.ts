@@ -29,7 +29,6 @@ export async function getRandomRecipeCards(
       subtitle: stripHtml(r.summary ?? "").slice(0, 120) + (r.summary ? "…" : ""),
     }));
   } catch (error) {
-    console.error("Error fetching random recipes:", error);
     return [];
   }
 }

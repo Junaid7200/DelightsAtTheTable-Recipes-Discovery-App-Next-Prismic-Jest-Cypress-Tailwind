@@ -30,6 +30,7 @@ export async function getSimilarRecipes(
       subtitle: `Ready in ${recipe.readyInMinutes} minutes.`,
     }));
   } catch (error) {
+    console.error("Error fetching similar recipes:", error);
     return [];
   }
 }
