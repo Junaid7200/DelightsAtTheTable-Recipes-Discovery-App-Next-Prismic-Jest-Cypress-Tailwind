@@ -60,7 +60,7 @@ export default async function RootLayout({
     >
       <body>
       <Nav page={homeData} />
-      <main>
+      <main className="grow">
         {children}
       </main>
       <Footer page={homeData} />

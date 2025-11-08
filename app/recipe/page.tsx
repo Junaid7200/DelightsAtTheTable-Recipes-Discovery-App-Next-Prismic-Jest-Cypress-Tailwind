@@ -111,7 +111,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
               {hasPrevPage && (
                 <Link
                   href={{ query: { q: userQuery, page: page - 1 } }}
-                  className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 hover:bg-[#FFDB63] active:bg-[#FFDB63]"
+                  className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 md:hover:bg-[#FFDB63] active:bg-[#FFDB63]"
                 >
                   {searchData.data.prev_button_text || "Previous"}
                 </Link>
@@ -119,7 +119,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
               {hasNextPage && (
                 <Link
                   href={{ query: { q: userQuery, page: page + 1 } }}
-                  className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 hover:bg-[#FFDB63] active:bg-[#FFDB63]"
+                  className="rounded-md bg-gray-200 px-4 py-2 text-sm font-medium text-gray-800 md:hover:bg-[#FFDB63] active:bg-[#FFDB63]"
                 >
                   {searchData.data.next_button_text || "Next"}
                 </Link>
