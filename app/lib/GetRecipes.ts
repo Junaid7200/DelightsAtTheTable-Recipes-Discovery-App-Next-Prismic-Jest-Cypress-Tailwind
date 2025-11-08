@@ -19,6 +19,7 @@ export async function getRandomRecipeCards(
           "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
           "x-rapidapi-host": HOST,
         },
+        next: { revalidate: 3600 },
       }
     );
   
