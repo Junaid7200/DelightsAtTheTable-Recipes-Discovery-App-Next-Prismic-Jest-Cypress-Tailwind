@@ -2,4 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-export const components = {};
+export const components = {
+  our_mission: dynamic(() => import("./OurMission")),
+  page_header: dynamic(() => import("./PageHeader")),
+};

@@ -1,0 +1,39 @@
+{
+  "format": "custom",
+  "id": "about_us",
+  "label": "About Us",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "meta_title": {
+        "type": "Text",
+        "config": {
+          "label": "meta title",
+          "placeholder": "meta data title for the about us page"
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "meta description",
+          "placeholder": "meta data description for the about us page"
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "our_mission": {
+              "type": "SharedSlice"
+            },
+            "page_header": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

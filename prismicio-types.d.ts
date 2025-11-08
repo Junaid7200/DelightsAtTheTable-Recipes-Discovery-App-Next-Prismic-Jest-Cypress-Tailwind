@@ -69,6 +69,62 @@ type ContentRelationshipFieldWithData<
   >;
 }[Exclude<TCustomType[number], string>["id"]];
 
+type AboutUsDocumentDataSlicesSlice = OurMissionSlice | PageHeaderSlice;
+
+/**
+ * Content for About Us documents
+ */
+interface AboutUsDocumentData {
+  /**
+   * meta title field in *About Us*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: meta data title for the about us page
+   * - **API ID Path**: about_us.meta_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * meta description field in *About Us*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: meta data description for the about us page
+   * - **API ID Path**: about_us.meta_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *About Us*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<AboutUsDocumentDataSlicesSlice>;
+}
+
+/**
+ * About Us document from Prismic
+ *
+ * - **API ID**: `about_us`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutUsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<AboutUsDocumentData>,
+    "about_us",
+    Lang
+  >;
+
 /**
  * Item in *Home → navbar link*
  */
@@ -330,6 +386,49 @@ export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
 /**
+ * Content for Not Found documents
+ */
+interface NotFoundDocumentData {
+  /**
+   * main heading field in *Not Found*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: h1 heading
+   * - **API ID Path**: not_found.main_heading
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  main_heading: prismic.KeyTextField;
+
+  /**
+   * paragraph text field in *Not Found*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: subsection paragraph
+   * - **API ID Path**: not_found.paragraph_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  paragraph_text: prismic.KeyTextField;
+}
+
+/**
+ * Not Found document from Prismic
+ *
+ * - **API ID**: `not_found`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NotFoundDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<NotFoundDocumentData>,
+    "not_found",
+    Lang
+  >;
+
+/**
  * Content for Recipe Details documents
  */
 interface RecipeDetailsDocumentData {
@@ -526,9 +625,131 @@ export type SearchRecipesDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | AboutUsDocument
   | HomeDocument
+  | NotFoundDocument
   | RecipeDetailsDocument
   | SearchRecipesDocument;
+
+/**
+ * Primary content in *OurMission → Default → Primary*
+ */
+export interface OurMissionSliceDefaultPrimary {
+  /**
+   * heading field in *OurMission → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: heading for the Our Mission section
+   * - **API ID Path**: our_mission.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Our Mission Image field in *OurMission → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_mission.default.primary.our_mission_image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  our_mission_image: prismic.ImageField<never>;
+
+  /**
+   * content of our mission field in *OurMission → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: the main content of the our mission heading
+   * - **API ID Path**: our_mission.default.primary.content_of_our_mission
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  content_of_our_mission: prismic.RichTextField;
+}
+
+/**
+ * Default variation for OurMission Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type OurMissionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<OurMissionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *OurMission*
+ */
+type OurMissionSliceVariation = OurMissionSliceDefault;
+
+/**
+ * OurMission Shared Slice
+ *
+ * - **API ID**: `our_mission`
+ * - **Description**: OurMission
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type OurMissionSlice = prismic.SharedSlice<
+  "our_mission",
+  OurMissionSliceVariation
+>;
+
+/**
+ * Primary content in *PageHeader → Default → Primary*
+ */
+export interface PageHeaderSliceDefaultPrimary {
+  /**
+   * title field in *PageHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Delícias à Mesa About Us
+   * - **API ID Path**: page_header.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *PageHeader → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: description of Delícias à Mesa
+   * - **API ID Path**: page_header.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for PageHeader Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PageHeaderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PageHeaderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *PageHeader*
+ */
+type PageHeaderSliceVariation = PageHeaderSliceDefault;
+
+/**
+ * PageHeader Shared Slice
+ *
+ * - **API ID**: `page_header`
+ * - **Description**: PageHeader
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PageHeaderSlice = prismic.SharedSlice<
+  "page_header",
+  PageHeaderSliceVariation
+>;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -551,16 +772,29 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      AboutUsDocument,
+      AboutUsDocumentData,
+      AboutUsDocumentDataSlicesSlice,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataNavbarLinkItem,
       HomeDocumentDataHeroSectionItem,
       HomeDocumentDataSocialsIconsItem,
+      NotFoundDocument,
+      NotFoundDocumentData,
       RecipeDetailsDocument,
       RecipeDetailsDocumentData,
       SearchRecipesDocument,
       SearchRecipesDocumentData,
       AllDocumentTypes,
+      OurMissionSlice,
+      OurMissionSliceDefaultPrimary,
+      OurMissionSliceVariation,
+      OurMissionSliceDefault,
+      PageHeaderSlice,
+      PageHeaderSliceDefaultPrimary,
+      PageHeaderSliceVariation,
+      PageHeaderSliceDefault,
     };
   }
 }

@@ -1,0 +1,25 @@
+{
+  "format": "custom",
+  "id": "not_found",
+  "label": "Not Found",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "main_heading": {
+        "type": "Text",
+        "config": {
+          "label": "main heading",
+          "placeholder": "h1 heading"
+        }
+      },
+      "paragraph_text": {
+        "type": "Text",
+        "config": {
+          "label": "paragraph text",
+          "placeholder": "subsection paragraph"
+        }
+      }
+    }
+  }
+}

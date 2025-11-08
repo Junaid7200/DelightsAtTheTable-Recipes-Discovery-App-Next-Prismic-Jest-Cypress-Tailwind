@@ -1,0 +1,33 @@
+{
+  "id": "page_header",
+  "type": "SharedSlice",
+  "name": "PageHeader",
+  "description": "PageHeader",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": "Delícias à Mesa About Us"
+          }
+        },
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "Description",
+            "placeholder": "description of Delícias à Mesa"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
