@@ -71,7 +71,7 @@ const isHorizontal = layout === 'horizontal' && !isMobile;
         <p className="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">{subtitle}</p>
         
         <Link href={`/recipe/${id}`} className="mt-4 block">
-          <button className="rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
+          <button className="cursor-pointer rounded-full bg-[#FFDB63] px-4 py-2 text-sm font-semibold text-gray-900">
             {buttonText || "View Recipe"}
           </button>
         </Link>
