@@ -15,7 +15,10 @@ type SearchPageProps = {
 export async function generateMetadata({
   searchParams,
 }: SearchPageProps): Promise<Metadata> {
-  const query = searchParams.q || "";
+  // Correctly access the search query.
+  const params = await searchParams;
+  const query = typeof params.q === "string" ? params.q : "";
+
   if (query) {
     return {
       title: `Search results for "${query}"`,
@@ -29,7 +32,7 @@ export async function generateMetadata({
   };
 }
 
-// ...existing code...
+
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const params = await searchParams;
   const userQuery = params.q || "";
