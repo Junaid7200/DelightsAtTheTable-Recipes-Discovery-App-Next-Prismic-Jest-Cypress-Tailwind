@@ -19,6 +19,11 @@ export const repositoryName =
  */
 // TODO: Update the routes array to match your project's route structure.
 const routes: Route[] = [
+  { type: "home", path: "/" },
+  { type: "search_recipes", path: "/recipe" },
+  { type: "recipe_details", path: "/recipe/:uid" },
+  { type: "about_us", path: "/about" },
+
   // Examples:
   // { type: "homepage", path: "/" },
   // { type: "page", path: "/:uid" },

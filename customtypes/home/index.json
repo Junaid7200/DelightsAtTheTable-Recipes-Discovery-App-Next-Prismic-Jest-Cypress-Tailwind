@@ -44,6 +44,15 @@
                 "allowText": true,
                 "repeat": false
               }
+            },
+            "page_link": {
+              "type": "Link",
+              "config": {
+                "label": "Page Link",
+                "select": "document",
+                "repeat": false,
+                "customtypes": []
+              }
             }
           }
         }

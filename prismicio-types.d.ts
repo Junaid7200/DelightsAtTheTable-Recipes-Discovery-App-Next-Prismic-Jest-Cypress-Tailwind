@@ -154,6 +154,16 @@ export interface HomeDocumentDataNavbarLinkItem {
     prismic.FieldState,
     never
   >;
+
+  /**
+   * Page Link field in *Home → navbar link*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.navbar_link[].page_link
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  page_link: prismic.ContentRelationshipField;
 }
 
 /**
@@ -410,6 +420,28 @@ interface NotFoundDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   paragraph_text: prismic.KeyTextField;
+
+  /**
+   * button text field in *Not Found*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: button text to return back to home
+   * - **API ID Path**: not_found.button_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *Not Found*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: not_found.button_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  button_link: prismic.ContentRelationshipField<"home">;
 }
 
 /**

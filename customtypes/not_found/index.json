@@ -19,6 +19,22 @@
           "label": "paragraph text",
           "placeholder": "subsection paragraph"
         }
+      },
+      "button_text": {
+        "type": "Text",
+        "config": {
+          "label": "button text",
+          "placeholder": "button text to return back to home"
+        }
+      },
+      "button_link": {
+        "type": "Link",
+        "config": {
+          "label": "Button Link",
+          "select": "document",
+          "repeat": false,
+          "customtypes": ["home"]
+        }
       }
     }
   }

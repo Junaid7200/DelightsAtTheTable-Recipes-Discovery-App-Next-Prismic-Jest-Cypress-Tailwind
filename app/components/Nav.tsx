@@ -1,11 +1,9 @@
 'use client';
-
-import Link from 'next/link'; // for routing
 import { PrismicNextImage } from '@prismicio/next'; // prismic library to get the special image component from there
 import { HomeDocument } from '@/prismicio-types'; // whatever custom types I make in 9999 server in prismic, a typescript type for it is created in prismicio-types.d.ts
-import { asLink } from '@prismicio/client'; // the links don't work withou an asLink function weirdly
 import { IoSearch, IoMenu, IoClose } from "react-icons/io5";  // simple icons for search icon, hamburger menu, and the cross to close
 import { useState } from 'react'; // ganna need useState for the mobile menu
+import { PrismicLink } from '@prismicio/react';
 
 export default function Nav({ page }: { page: HomeDocument }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);  // mobile menu is not open initially
@@ -29,9 +27,9 @@ export default function Nav({ page }: { page: HomeDocument }) {
         {/* Center: menu: the whole thing needs to be hidden in mobile view, in md or higher view its a very simple flex with some gap */}
         <div className="justify-self-center hidden md:flex items-center gap-10">
           {page.data.navbar_link.map((item) => (
-            <Link key={item.navbar_link_text} href={asLink(item.navbar_link) || "www.google.com"} className="text-lg font-semibold hover:text-[#FFDB63] transition-colors">
+            <PrismicLink key={item.navbar_link_text} field={item.page_link} className="text-lg font-semibold hover:text-[#FFDB63] transition-colors">
               {item.navbar_link_text}
-            </Link>
+            </PrismicLink>
           ))}
         </div>
 
@@ -90,14 +88,14 @@ export default function Nav({ page }: { page: HomeDocument }) {
         {/* Drawer Links: 3 simple links and texts from prismic in a flex-col */}
         <div className="flex flex-col items-center gap-8 mt-16">
           {page.data.navbar_link.map((item) => (
-            <Link
+            <PrismicLink
               key={item.navbar_link_text}
-              href={asLink(item.navbar_link) || "www.google.com"}
+              field={item.page_link}
               className="text-2xl font-semibold hover:text-[#FFDB63] transition-colors"
               onClick={() => setIsMobileMenuOpen(false)} // Close menu on link click
             >
               {item.navbar_link_text}
-            </Link>
+            </PrismicLink>
           ))}
         </div>
 
