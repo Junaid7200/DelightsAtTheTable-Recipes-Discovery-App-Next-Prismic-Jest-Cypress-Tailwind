@@ -1,7 +1,7 @@
 import "server-only";
 import axios from "axios";
 import type { RecipeDetail } from "@/app/types/RecipeDetail";
-import { BASE, HOST } from "./utils";
+import { BASE, HOST } from "@/app/lib/utils";
 
 
 export async function getRecipeById(id: number): Promise<RecipeDetail | null> {

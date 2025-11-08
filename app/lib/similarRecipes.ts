@@ -3,7 +3,7 @@ import axios from "axios";
 import type { RecipeCardProps } from "@/app/types/CardType";
 import placeholderImage from "@/public/imgNotFound.jpg";
 import type { SimilarRecipe } from "@/app/types/SimilarRecipe";
-import { BASE, HOST } from './utils';
+import { BASE, HOST } from '@/app/lib/utils';
 
 const IMAGE_BASE = "https://img.spoonacular.com/recipes";
 

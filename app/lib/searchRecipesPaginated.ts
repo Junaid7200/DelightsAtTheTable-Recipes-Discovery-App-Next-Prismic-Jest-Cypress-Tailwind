@@ -1,5 +1,5 @@
 import axios from "axios";
-import stripHtml, {BASE, HOST} from "./utils";
+import stripHtml, {BASE, HOST} from "@/app/lib/utils";
 
 
 

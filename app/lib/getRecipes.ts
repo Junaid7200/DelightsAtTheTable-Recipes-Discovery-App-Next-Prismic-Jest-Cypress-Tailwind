@@ -2,7 +2,7 @@ import "server-only";
 import axios from "axios";
 import type { RecipeCardProps } from "@/app/types/CardType";
 import placeholderImage from "@/public/imgNotFound.jpg";
-import stripHtml, { BASE, HOST} from "./utils";
+import stripHtml, { BASE, HOST} from "@/app/lib/utils";
 
 export async function getRandomRecipeCards(
   { number = 6, tags = [] as string[] } = {}
