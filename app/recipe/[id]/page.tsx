@@ -51,6 +51,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
   const recipeData = await client.getSingle("recipe_details");
   const homeData = await client.getSingle("home");
   const similarRecipes = await getSimilarRecipes(id);
+  console.log("Similar Recipes:", similarRecipes);
 
   if (!recipe) {
     notFound();
