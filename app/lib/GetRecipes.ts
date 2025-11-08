@@ -29,7 +29,7 @@ export async function getRandomRecipeCards(
         "x-rapidapi-host": HOST,
       },
       // This 'next' object ONLY works with fetch
-      next: { revalidate: 3600 }, // Revalidate once per hour
+      next: { revalidate: 10800 }, // Revalidate once per 3 hours
     });
 
     if (!response.ok) {

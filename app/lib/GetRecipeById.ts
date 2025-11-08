@@ -16,15 +16,11 @@ export async function getRecipeById(id: number): Promise<RecipeDetail | null> {
         next: { revalidate: 3600 }, // Cache results for one hour
       }
     );
-        if (!response.ok) {
-      throw new Error(`API call failed with status: ${response.status}`);
-    }
     
     const data: RecipeDetail = await response.json();
     
     return data;
   } catch (error) {
-    console.error(`Error fetching recipe by ID ${id}:`, error);
     return null;
   }
 }
