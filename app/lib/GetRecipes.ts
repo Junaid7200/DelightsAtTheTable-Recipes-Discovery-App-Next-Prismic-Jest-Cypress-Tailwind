@@ -18,9 +18,6 @@ export async function getRandomRecipeCards(
         headers: {
           "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
           "x-rapidapi-host": HOST,
-          'Cache-Control': 'no-cache',
-          'Pragma': 'no-cache',
-          'Expires': '0',
         },
       }
     );
