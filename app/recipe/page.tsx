@@ -91,7 +91,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         {cards.length > 0 ? (
           <>
             {userQuery && (
-              <h2 className="mb-6 text-2xl font-bold">
+              <h2 className="mb-6 text-2xl font-bold md:px-16">
                 {`${searchData.data.results_heading} "${userQuery}"`}
               </h2>
             )}
