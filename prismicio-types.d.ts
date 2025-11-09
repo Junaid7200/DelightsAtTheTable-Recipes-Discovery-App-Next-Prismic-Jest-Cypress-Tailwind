@@ -140,22 +140,6 @@ export interface HomeDocumentDataNavbarLinkItem {
   navbar_link_text: prismic.KeyTextField;
 
   /**
-   * navbar link field in *Home → navbar link*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: home.navbar_link[].navbar_link
-   * - **Documentation**: https://prismic.io/docs/fields/link
-   */
-  navbar_link: prismic.LinkField<
-    string,
-    string,
-    unknown,
-    prismic.FieldState,
-    never
-  >;
-
-  /**
    * Page Link field in *Home → navbar link*
    *
    * - **Field Type**: Content Relationship

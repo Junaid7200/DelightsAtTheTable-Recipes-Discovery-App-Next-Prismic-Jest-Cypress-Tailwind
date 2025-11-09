@@ -89,7 +89,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
                 <li key={step.number} className="flex items-start">
                   <span className="text-black rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-1 shrink-0"
                   aria-hidden="true">
-                    {step.number}
+                    {step.number}.
                   </span>
                   <span>{step.step}</span>
                 </li>

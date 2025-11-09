@@ -4,6 +4,7 @@ import { HomeDocument } from '@/prismicio-types'; // whatever custom types I mak
 import { IoSearch, IoMenu, IoClose } from "react-icons/io5";  // simple icons for search icon, hamburger menu, and the cross to close
 import { useState } from 'react'; // ganna need useState for the mobile menu
 import { PrismicLink } from '@prismicio/react';
+import Link from 'next/link';
 
 export default function Nav({ page }: { page: HomeDocument }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);  // mobile menu is not open initially
@@ -19,11 +20,12 @@ export default function Nav({ page }: { page: HomeDocument }) {
       <div className="flex px-5 md:px-0 max-w-[1285px] mx-auto my-0 md:grid md:grid-cols-3 items-center justify-between">
         
         {/* Left: logo + website name: the website name needs to be hidden for mobile view but block (visible) for md or bigger. other then that, this just needs to be horizontal so flex will do */}
-        <PrismicLink href="/" className="flex items-center gap-4 md:justify-self-start" aria-label="Homepage">
+        
+        <Link href="/" className="flex items-center gap-4 md:justify-self-start" aria-label="Homepage">
           <PrismicNextImage field={page.data.website_logo} width={28} height={26} />
           {/* Hide text on mobile, show on medium+ */}
           <span className="text-2xl hidden md:block">{page.data.website_name}</span>
-        </PrismicLink>
+        </Link>
 
         {/* Center: menu: the whole thing needs to be hidden in mobile view, in md or higher view its a very simple flex with some gap */}
         <div className="justify-self-center hidden md:flex items-center gap-10">

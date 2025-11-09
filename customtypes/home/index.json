@@ -34,17 +34,6 @@
                 "placeholder": ""
               }
             },
-            "navbar_link": {
-              "type": "Link",
-              "config": {
-                "label": "navbar link",
-                "placeholder": "",
-                "select": null,
-                "allowTargetBlank": true,
-                "allowText": true,
-                "repeat": false
-              }
-            },
             "page_link": {
               "type": "Link",
               "config": {

@@ -67,7 +67,7 @@ const isHorizontal = layout === 'horizontal' && !isMobile;
         "flex-1 bg-[#F5F2EE] px-12 py-5",
         isHorizontal && "rounded-r-2xl flex flex-col gap-3 justify-center"
       )}>
-        <h3 className={clsx("mb-4 text-xl font-bold text-gray-900")}>{title}</h3>
+        <h3 className={clsx("mb-4 text-xl font-bold text-gray-900 line-clamp-1")}>{title}</h3>
         <p className="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">{subtitle}</p>
         
         <Link href={`/recipe/${id}`} className="mt-4 block">
