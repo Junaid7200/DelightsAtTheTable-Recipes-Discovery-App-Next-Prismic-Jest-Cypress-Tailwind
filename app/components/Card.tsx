@@ -38,7 +38,7 @@ const isHorizontal = layout === 'horizontal' && !isMobile;
   return (
     <article className={clsx(
       "overflow-hidden rounded-2xl border border-gray-200 shadow-sm",
-      isHorizontal ? "flex md:min-w-full items-stretch md:min-h-[260px]" : "bg-[#F5F2EE]"
+      isHorizontal ? "flex md:min-w-full items-stretch md:min-h-[260px]" : "bg-[#F5F2F2]"
     )}>
       {/* Image Section */}
       <div className={clsx(
