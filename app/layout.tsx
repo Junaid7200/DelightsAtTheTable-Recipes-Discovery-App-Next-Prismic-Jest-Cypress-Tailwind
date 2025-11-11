@@ -58,7 +58,7 @@ export default async function RootLayout({
     <html lang="en"
       className={`${inter.className} antialiased`}
     >
-      <body>
+      <body className="flex flex-col min-h-screen">
       <Nav page={homeData} />
       <main className="grow">
         {children}

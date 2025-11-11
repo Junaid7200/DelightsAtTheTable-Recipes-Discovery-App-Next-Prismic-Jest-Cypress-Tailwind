@@ -109,7 +109,10 @@
               "type": "Image",
               "config": {
                 "label": "icon1",
-                "constraint": {},
+                "constraint": {
+                  "width": 44,
+                  "height": 44
+                },
                 "thumbnails": []
               }
             },
@@ -117,7 +120,10 @@
               "type": "Image",
               "config": {
                 "label": "icon2",
-                "constraint": {},
+                "constraint": {
+                  "width": 44,
+                  "height": 44
+                },
                 "thumbnails": []
               }
             },
@@ -125,7 +131,10 @@
               "type": "Image",
               "config": {
                 "label": "icon3",
-                "constraint": {},
+                "constraint": {
+                  "width": 44,
+                  "height": 44
+                },
                 "thumbnails": []
               }
             },
@@ -133,7 +142,10 @@
               "type": "Image",
               "config": {
                 "label": "icon4",
-                "constraint": {},
+                "constraint": {
+                  "width": 44,
+                  "height": 44
+                },
                 "thumbnails": []
               }
             }

@@ -14,7 +14,7 @@ const SkeletonCard = () => (
 
 export default function Loading() {
   return (
-    <div className="flex flex-col items-center px-6 py-10 min-h-screen">
+    <div className="flex flex-col items-center px-6 py-10 min-h-screen max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
       {/* Skeleton Search Bar */}
       <section className="w-full max-w-3xl">
         <div className="mb-12 h-9 w-1/2 mx-auto bg-gray-200 rounded animate-pulse"></div>
@@ -29,7 +29,7 @@ export default function Loading() {
       {/* Skeleton Search Results */}
       <section className="mt-16 md:mt-32 w-full">
         <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 md:grid-cols-3 md:px-16 min-w-full">
-          {Array.from({ length: 6 }).map((_, i) => (
+          {Array.from({ length: 3 }).map((_, i) => (
             <SkeletonCard key={i} />
           ))}
         </div>
