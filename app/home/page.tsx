@@ -16,7 +16,7 @@ export default async function Home() {
             <Hero page = {homeData} />
             {/* popular recipes section */}
         <div className="mt-20 mb-[120px]">
-        <div className="flex flex-col justify-center items-center w-[90%] max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
+        <div className="flex flex-col justify-center items-center md:w-[90%] lg:max-w-[1440px] 2xl:max-w-[1600px] mx-auto">
                 <h1 className="text-[40px] font-bold">
                     {homeData.data.section_one_text}
                 </h1>
@@ -31,7 +31,7 @@ export default async function Home() {
         </div>
         {/* recent recipes section */}
         <div>
-        <div className="flex flex-col justify-center items-center md:max-w-[80%] mx-auto w-[80%] max-w-[1300px] 2xl:max-w-[1500px]">
+        <div className="flex flex-col justify-center items-center mx-auto md:max-w-[1350px] 2xl:max-w-[1550px]">
         <h1 className="text-[40px] font-bold mb-10">
             {homeData.data.section_two_text}
         </h1>
