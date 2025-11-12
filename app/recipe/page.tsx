@@ -53,7 +53,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const hasPrevPage = page > 1;
 
   return (
-    <div className="flex flex-col items-center px-6 py-10">
+    <div className="flex flex-col items-center px-6 py-10 mb-20">
       {/* Search recipe section */}
       <section className="w-full max-w-3xl">
         {/* prismicrichtext below: */}
