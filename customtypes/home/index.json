@@ -148,6 +148,50 @@
                 },
                 "thumbnails": []
               }
+            },
+            "icon1_link": {
+              "type": "Link",
+              "config": {
+                "label": "icon1_link",
+                "placeholder": "something",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            },
+            "icon2_link": {
+              "type": "Link",
+              "config": {
+                "label": "icon2_link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            },
+            "icon3_link": {
+              "type": "Link",
+              "config": {
+                "label": "icon3_link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
+            },
+            "icon4_link": {
+              "type": "Link",
+              "config": {
+                "label": "icon4_link",
+                "placeholder": "",
+                "select": null,
+                "allowTargetBlank": true,
+                "allowText": true,
+                "repeat": false
+              }
             }
           }
         }

@@ -228,6 +228,70 @@ export interface HomeDocumentDataSocialsIconsItem {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   icon4: prismic.ImageField<never>;
+
+  /**
+   * icon1_link field in *Home → socials icons*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: something
+   * - **API ID Path**: home.socials_icons[].icon1_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  icon1_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * icon2_link field in *Home → socials icons*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.socials_icons[].icon2_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  icon2_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * icon3_link field in *Home → socials icons*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.socials_icons[].icon3_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  icon3_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * icon4_link field in *Home → socials icons*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home.socials_icons[].icon4_link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  icon4_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
 }
 
 /**

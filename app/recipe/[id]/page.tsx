@@ -13,7 +13,7 @@ type RecipePageProps = {
 };
 
 export async function generateMetadata({ params }: RecipePageProps): Promise<Metadata> {
-  const { id } = await params;
+  const { id } = params;
   const recipe = await getRecipeById(Number(id));
 
   if (!recipe) {

@@ -48,6 +48,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   ]);
 
   const { results: cards, totalResults } = searchResponse;
+  const totalPages = Math.max(1, Math.ceil(totalResults / RECIPES_PER_PAGE));
+  const startPage = Math.max(1, page - 9);
+  const endPage = Math.min(totalPages, startPage + 19);
+  const adjustedStart = Math.max(1, endPage - 19);
+  const pages = Array.from({ length: endPage - adjustedStart + 1 }, (_, i) => adjustedStart + i);
 
   const hasNextPage = page * RECIPES_PER_PAGE < totalResults;
   const hasPrevPage = page > 1;
@@ -88,7 +93,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             </div>
 
             {/* Pagination Controls */}
-            <div className="mt-10 flex items-center justify-center gap-4">
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
+              <span className="text-sm text-gray-600">
+                Page {page} of {totalPages}
+              </span>
               {hasPrevPage && (
                 <Link
                   href={{ query: { q: userQuery, page: page - 1 } }}
@@ -97,6 +105,15 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                   {searchData.data.prev_button_text || "Previous"}
                 </Link>
               )}
+              {pages.map((p) => (
+                <Link
+                  key={p}
+                  href={{ query: { q: userQuery, page: p } }}
+                  className={`rounded-md px-3 py-2 text-sm font-medium ${p === page ? "bg-[#FFDB63] text-gray-900" : "bg-gray-200 text-gray-800 md:hover:bg-[#FFDB63] active:bg-[#FFDB63]"}`}
+                >
+                  {p}
+                </Link>
+              ))}
               {hasNextPage && (
                 <Link
                   href={{ query: { q: userQuery, page: page + 1 } }}

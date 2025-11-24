@@ -1,14 +1,14 @@
-import { PrismicNextImage } from '@prismicio/next';
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { HomeDocument } from '@/prismicio-types';
 
 export default function Footer({ page }: {page: HomeDocument}) {
     const socialIconsGroup = page.data.socials_icons[0];
 
     const icons = socialIconsGroup ? [
-        socialIconsGroup.icon1,
-        socialIconsGroup.icon2,
-        socialIconsGroup.icon3,
-        socialIconsGroup.icon4
+        {img: socialIconsGroup.icon1, link: socialIconsGroup.icon1_link},
+        {img: socialIconsGroup.icon2, link: socialIconsGroup.icon2_link},
+        {img: socialIconsGroup.icon3, link: socialIconsGroup.icon3_link},
+        {img: socialIconsGroup.icon4, link: socialIconsGroup.icon4_link}
     ] : [];
 
     return (
@@ -21,11 +21,20 @@ export default function Footer({ page }: {page: HomeDocument}) {
                 
                 <div className="flex flex-col items-center gap-2">
                     <h3 className='font-semibold text-[26px] text-[#000000] '>{page.data.footer_text}</h3>
-                    <div className="flex gap-4">
-                        {icons.map((icon, index) => (
-                            icon.url && <PrismicNextImage key={index} field={icon} />
-                        ))}
-                    </div>
+                <div className="flex gap-4">
+                    {icons.map(
+                        ({ img, link }, index) =>
+                        img?.url && (
+                            link ? (
+                            <PrismicNextLink key={index} field={link}>
+                                <PrismicNextImage field={img} />
+                            </PrismicNextLink>
+                            ) : (
+                            <PrismicNextImage key={index} field={img} />
+                            )
+                        )
+                    )}
+                </div>
                 </div>
             </div>
         </footer>
