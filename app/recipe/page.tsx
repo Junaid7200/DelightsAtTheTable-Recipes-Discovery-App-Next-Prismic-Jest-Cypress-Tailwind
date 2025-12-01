@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { getHomeData } from "../lib/GetHomeData";
 
-const RECIPES_PER_PAGE = 3;
+const RECIPES_PER_PAGE = 6;
 
 type SearchPageProps = {
   searchParams: { q?: string; page?: string };
@@ -49,10 +49,17 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
   const { results: cards, totalResults } = searchResponse;
   const totalPages = Math.max(1, Math.ceil(totalResults / RECIPES_PER_PAGE));
-  const startPage = Math.max(1, page - 9);
-  const endPage = Math.min(totalPages, startPage + 19);
-  const adjustedStart = Math.max(1, endPage - 19);
-  const pages = Array.from({ length: endPage - adjustedStart + 1 }, (_, i) => adjustedStart + i);
+  const maxVisiblePages = 5;
+  const halfWindow = Math.floor(maxVisiblePages / 2);
+
+  // Center the current page within the window when possible, but always show at most 5 buttons.
+  let startPage = Math.max(1, page - halfWindow);
+  let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+  // If we hit the end, shift the window left to keep 5 buttons.
+  startPage = Math.max(1, endPage - maxVisiblePages + 1);
+
+  const pages = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
 
   const hasNextPage = page * RECIPES_PER_PAGE < totalResults;
   const hasPrevPage = page > 1;
