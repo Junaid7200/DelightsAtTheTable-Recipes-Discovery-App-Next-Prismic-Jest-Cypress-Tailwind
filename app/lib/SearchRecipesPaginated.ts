@@ -23,7 +23,7 @@ export async function searchRecipes(query: string, page: number = 1) {
           "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
           "x-rapidapi-host": HOST,
         },
-        next: { revalidate: 3600 } // Cache for 1 hour
+        next: { revalidate: 172800 }
       }
     );
 
